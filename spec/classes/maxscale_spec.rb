@@ -11,6 +11,7 @@ describe 'maxscale' do
         }}
         let(:facts) {{
           :osfamily        => osfamily,
+          :operatingsystem => 'Ubuntu',
           :lsbdistid       => 'Ubuntu',
           :lsbdistcodename => 'trusty',
           :lsbdistrelease  => '14.04',
@@ -27,6 +28,7 @@ describe 'maxscale' do
         }}
         let(:facts) {{
           :osfamily        => osfamily,
+          :operatingsystem => 'Ubuntu',
           :lsbdistid       => 'Ubuntu',
           :lsbdistcodename => 'trusty',
           :lsbdistrelease  => '14.04',
@@ -88,6 +90,7 @@ describe 'maxscale' do
         let(:params) {{ :install_repository => false, }}
         let(:facts) {{
           :osfamily        => osfamily,
+          :operatingsystem => 'Ubuntu',
           :lsbdistid       => 'Ubuntu',
           :lsbdistcodename => 'trusty',
           :lsbdistrelease  => '14.04',
@@ -137,6 +140,7 @@ describe 'maxscale' do
         }}
         let(:facts) {{
           :osfamily        => osfamily,
+          :operatingsystem => 'Ubuntu',
           :lsbdistid       => 'Ubuntu',
           :lsbdistcodename => 'trusty',
           :lsbdistrelease  => '14.04',
@@ -155,6 +159,7 @@ describe 'maxscale' do
         }}
         let(:facts) {{
           :osfamily        => osfamily,
+          :operatingsystem => 'Ubuntu',
           :lsbdistid       => 'Ubuntu',
           :lsbdistcodename => 'trusty',
           :lsbdistrelease  => '14.04',

@@ -16,10 +16,19 @@ class maxscale::params {
 
   case $::osfamily {
     'Debian': {
+      $repo_os          = downcase($::operatingsystem)
       $repo_release     = $::lsbdistcodename
       $repo_repository  = 'main'
       $repo_fingerprint = '13CFDE6DD9EE9784F41AF0F670E4618A8167EE24'
       $repo_keyserver   = 'hkp://keyserver.ubuntu.com:80'
+    }
+    'RedHat': {
+      $repo_release     = "${::operatingsystemmajrelease}/x86_64"
+      if $::operatingsystem == 'RedHat' {
+        $repo_os        = 'rhel'
+      } else {
+        $repo_os        = downcase($::operatingsystem)
+      }
     }
     default: {
       fail("${::operatingsystem} not supported")
