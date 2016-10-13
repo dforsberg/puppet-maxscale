@@ -23,12 +23,16 @@ class maxscale::params {
       $repo_keyserver   = 'hkp://keyserver.ubuntu.com:80'
     }
     'RedHat': {
-      $repo_release     = "${::operatingsystemmajrelease}/x86_64"
+      $repo_repository  = ''
+      $repo_fingerprint = ''
+      $repo_keyserver   = ''
+      $repo_release     = ''
       if $::operatingsystem == 'RedHat' {
-        $repo_os        = 'rhel'
+        $_os            = "rhel"
       } else {
-        $repo_os        = downcase($::operatingsystem)
+        $_os            = downcase($::operatingsystem)
       }
+      $repo_os          = "${_os}/${::operatingsystemmajrelease}/x86_64"
     }
     default: {
       fail("${::operatingsystem} not supported")

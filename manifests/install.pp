@@ -39,8 +39,8 @@ class maxscale::install {
         } ->
         yumrepo { 'maxscale':
           enabled  => '1',
-          descr    => "MariaDB-MaxScale ${maxscale::repo_version}",
-          baseurl  => "${repo_location}/${maxscale::repo_release}",
+          descr    => "MariaDB-MaxScale",
+          baseurl  => $repo_location,
           gpgcheck => '1',
           gpgkey   => 'file:///etc/pki/rpm-gpg/MariaDB-MaxScale-GPG-KEY',
         }
