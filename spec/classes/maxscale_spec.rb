@@ -4,11 +4,13 @@ describe 'maxscale' do
 
   context 'supported operating systems' do
 
-    ['Debian'].each do |osfamily|
+    ['Debian','RedHat'].each do |osfamily, os_facts|
 
       describe "maxscale class without required parameters on #{osfamily}" do
         let(:params) {{
         }}
+        case os_facts[:osfamily]
+        when 'Debian'
         let(:facts) {{
           :osfamily        => osfamily,
           :operatingsystem => 'Ubuntu',
@@ -17,6 +19,14 @@ describe 'maxscale' do
           :lsbdistrelease  => '14.04',
           :puppetversion   => Puppet.version,
         }}
+        when 'RedHat'
+        let(:facts) {{
+          :osfamily        => osfamily,
+          :operatingsystem => 'RedHat',
+          :puppetversion   => Puppet.version,
+        }}
+        end
+
 
         it { should_not compile.with_all_deps }
         it { expect { should contain_package('maxscale') }.to raise_error(Puppet::Error, /You need to provide a valid token. See https:\/\/github.com\/tubemogul\/puppet-maxscale#before-you-begin for more details./) }
